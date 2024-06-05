@@ -1,37 +1,24 @@
 "use client"
 
-import { Accordion } from "@/accordion/accordion"
+import { Accordion } from "@/lib/accordion/accordion"
 import axios from "axios"
 import { useEffect, useState } from "react"
-
-type State = undefined | {
-    items: Array<{
-        fields: {
-            accordionItems: any[]
-        }
-    }>
-}
+import { WidthRestrictedFrame } from "@/lib/widthRestrictedFrame"
 
 export const Form = () => {
-
-    const [rawData, setRawData] = useState<State>(undefined)
+    const [panels, setPanels] = useState<any[]>()
 
     useEffect(() => {
-        if (!rawData) {
-            axios.get('/api/getData').then(({data}) => setRawData(data))
+        if (!panels) {
+            axios.get('/api/getPanels').then(({data}) => setPanels(data.panels))
         }
-    }, [rawData])
-
-    const panels = rawData?.items[0].fields.accordionItems.map(({fields}) => ({
-        id: fields.internalName,
-        content: fields.text,
-        title: fields.internalName
-    })) || []
-
+    }, [panels])
 
     return (
         <div>
-            <Accordion panels={panels}/>
+            <WidthRestrictedFrame>
+                <Accordion panels={panels || []}/>
+            </WidthRestrictedFrame>
         </div>
     )
 }

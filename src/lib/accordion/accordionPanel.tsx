@@ -1,4 +1,4 @@
-import { Collapsible } from '@/collapsible'
+import { Collapsible } from '@/lib/collapsible'
 import React, {useState} from 'react'
 import styled, {css} from 'styled-components'
 
@@ -40,28 +40,21 @@ const Header = styled.button<{collapsed: boolean}>`
   cursor: pointer;
   display: flex;
   padding: 16px 0;
+  font-weight: 500;
   align-items: center;
   -webkit-tap-highlight-color: transparent;
   gap: 8px;
-  border-bottom-color: red;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
+  border-bottom: 2px solid #9fadb8;
+  transition: border-bottom-color .5s linear;
   @media (hover: hover) {
     &:hover {
-      border-bottom-width: 2px;
-      padding: 16px 0 15px 0;
-      border-bottom-color: orange;
+      border-bottom-color: black;
     }
   }
   &:focus-visible {
     outline: 4px solid cyan;
     border-bottom-color: transparent;
   }
-  ${({collapsed}) => !collapsed && css`
-    border-bottom-width: 2px;
-    padding: 16px 0 15px 0;
-    border-bottom-color: black;
-  `}
 `
 
 const Content = styled.div`
