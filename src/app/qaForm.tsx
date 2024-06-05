@@ -1,11 +1,11 @@
 "use client"
 
 import axios from "axios"
-import { Accordion } from "@/lib/accordion/accordion"
+import { Accordion } from "@/lib/components/accordion/accordion"
 import { useEffect, useState } from "react"
-import { WidthRestrictedFrame } from "@/lib/widthRestrictedFrame"
-import { Loader } from "@/lib/loader"
-import { minTime } from "@/lib/minTime"
+import { WidthRestrictedFrame } from "@/lib/components/widthRestrictedFrame"
+import { Loader } from "@/lib/components/loader"
+import { minTime } from "@/lib/utils/minTime"
 
 export const QAForm = () => {
     const [panels, setPanels] = useState<any[]>()

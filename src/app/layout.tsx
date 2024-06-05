@@ -1,8 +1,8 @@
 "use client"
 
-import StyledComponentsRegistry from '../lib/registry'
+import StyledComponentsRegistry from '../lib/components/registry'
 import Image from 'next/image'
-import { WidthRestrictedFrame } from "@/lib/widthRestrictedFrame"
+import { WidthRestrictedFrame } from "@/lib/components/widthRestrictedFrame"
 import styled from 'styled-components'
 import { Work_Sans } from 'next/font/google'
 

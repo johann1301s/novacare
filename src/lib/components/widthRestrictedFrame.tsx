@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {breakpointsMedia, spacing} from './styleVariables'
+import {breakpointsMedia, spacing} from '../styleVariables'
 
 export type TWidthRestrictedFrameProps = {
   maxWidth?: number

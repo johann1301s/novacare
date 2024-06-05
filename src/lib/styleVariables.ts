@@ -1,20 +1,9 @@
 
 
-export const fontWeights = {
-  400: 400 as const,
-  500: 500 as const,
-  700: 700 as const
-}  
-
 export const breakpoints = {
   s: 0 as const,
   m: 760 as const,
   l: 1134 as const
-}
-
-export const lineHeights = {
-  collapsedRatio: 1 as const,
-  goldenRatio: 1.618 as const 
 }
 
 export const spacing = {
@@ -81,25 +70,4 @@ export const breakpointsMedia = {
   s: `@media all and (min-width: ${breakpoints.s}px)` as const,
   m: `@media all and (min-width: ${breakpoints.m}px)` as const,
   l: `@media all and (min-width: ${breakpoints.l}px)` as const,
-}
-
-export const iconSizes = {
-  s: {
-    xs: 16,
-    s: 20,
-    m: 24,
-    l: 28
-  },
-  m: {
-    xs: 16,
-    s: 24,
-    m: 28,
-    l: 32
-  },
-  l: {
-    xs: 16,
-    s: 26,
-    m: 32,
-    l: 38
-  }
 }

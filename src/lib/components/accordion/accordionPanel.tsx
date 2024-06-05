@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-import { Collapsible } from '@/lib/collapsible'
+import { Collapsible } from '@/lib/components/collapsible'
 import { AccordionIcon } from './accordionIcon'
 
 export type TAccordionPanelProps = {
