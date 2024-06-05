@@ -1,11 +1,11 @@
 import "./globals.css";
-import { Form } from "./form";
+import { QAForm } from "./qaForm";
 
 export default function Home() {
 
   return (
     <main>
-      <Form/>
+      <QAForm/>
     </main>
   );
 }

@@ -16,7 +16,9 @@ export const Accordion = (props: TAccordionProps) => {
 
   return (
     <Frame>
-      {props.title}
+      <Title>
+        {props.title}
+      </Title>
       <Panels>
         {props.panels.map((panel) => (
           <AccordionPanel
@@ -41,4 +43,9 @@ const Panels = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+`
+
+const Title = styled.span`
+  font-size: 24px;
+  font-weight: 500;
 `

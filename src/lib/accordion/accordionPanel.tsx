@@ -1,6 +1,7 @@
-import { Collapsible } from '@/lib/collapsible'
 import React, {useState} from 'react'
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
+import { Collapsible } from '@/lib/collapsible'
+import { AccordionIcon } from './accordionIcon'
 
 export type TAccordionPanelProps = {
   content: string
@@ -15,6 +16,7 @@ export const AccordionPanel = (props: TAccordionPanelProps) => {
       <Header
         collapsed={collapsed}
         onClick={() => setCollapsed((prev) => !prev)}>
+        <AccordionIcon isCollapsed={collapsed}/>
         <span>
           {props.title}
         </span>
@@ -36,6 +38,8 @@ const Frame = styled.div`
 `
 
 const Header = styled.button<{collapsed: boolean}>`
+  display: flex;
+  gap: 8px;
   all: unset;
   cursor: pointer;
   display: flex;
@@ -46,13 +50,14 @@ const Header = styled.button<{collapsed: boolean}>`
   gap: 8px;
   border-bottom: 2px solid #9fadb8;
   transition: border-bottom-color .5s linear;
+  font-size: 18px;
   @media (hover: hover) {
     &:hover {
       border-bottom-color: black;
     }
   }
   &:focus-visible {
-    outline: 4px solid cyan;
+    outline: 4px solid #041f35;
     border-bottom-color: transparent;
   }
 `

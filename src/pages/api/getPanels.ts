@@ -1,35 +1,42 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { createClient } from "contentful"
+import { schemas } from '@/lib/schemas/schemas'
  
-type ResponseData = any
+type GetPanelsResponse = {
+  panels: Array<{
+    id: string
+    content: string
+    title: string
+  }>
+} | {
+  error?: string
+}
  
-export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
+export default async function getPanels(_req: NextApiRequest, res: NextApiResponse<GetPanelsResponse>) {
   const client = createClient({
     accessToken: process.env.Access_token!,
     space: process.env.Space!,
   })
-  const response: any = await client.getEntries({
+
+  const {items} = await client.getEntries({
     content_type: "accordion",
-    include: 2,
+    include: 4,
   })
 
-  const panels = response?.items[0].fields.accordionItems.map(({fields}: any) => ({
+  const fields = items?.at(0)?.fields
+
+  if (!schemas.panels.validate(fields)) {
+    const error = schemas.panels.validate.errors?.map(({message}) => message).join('\n')
+    res.status(500).json({error})
+
+    return
+  }
+
+  const panels = fields.accordionItems.map(({fields}) => ({
       id: fields.internalName,
       content: fields.text,
       title: fields.internalName
   })) || []
 
   res.status(200).json({panels})
-}
-
-
-export type ContentfulResponse = {
-  sys: {
-    type: 'Array'
-  }
-  total: number
-  skip: number
-  limit: number
-  items: [ { metadata: [Object], sys: [Object], fields: [Object] } ],
-  includes: { Entry: [ [Object], [Object], [Object], [Object], [Object] ] }
 }
