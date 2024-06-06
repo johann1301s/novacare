@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import { Header } from '@/app/header'
  
-describe('Test RootLayout component', () => {
+describe('Test Header component', () => {
   it('Icon has alt attrubute', () => {
     render(<Header/>)
 
