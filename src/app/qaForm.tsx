@@ -14,7 +14,7 @@ export const QAForm = () => {
     const [error, setError] = useState<string>()
 
     useEffect(() => {
-        if (panels) return
+        if (panels.length) return
         minTime(axios.get('/api/getPanels'), 500)
             .then(({data}) => setPanels(data.panels))
             .catch(() => setError('An unknown error occurred.'))
