@@ -6,9 +6,10 @@ import { useEffect, useState } from "react"
 import { WidthRestrictedFrame } from "@/lib/components/widthRestrictedFrame"
 import { Loader } from "@/lib/components/loader"
 import { minTime } from "@/lib/utils/minTime"
+import { Panels } from "@/pages/api/getPanels"
 
 export const QAForm = () => {
-    const [panels, setPanels] = useState<any[]>()
+    const [panels, setPanels] = useState<Panels['panels']>([])
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState<string>()
 
@@ -23,7 +24,7 @@ export const QAForm = () => {
     return (
         <div>
             <WidthRestrictedFrame>
-                {isLoading ? <Loader/> : <Accordion title={'Novacare QA'} panels={panels || []}/>}
+                {isLoading ? <Loader/> : <Accordion title={'Novacare QA'} panels={panels}/>}
                 {error && <div>Error: {error}</div>}
             </WidthRestrictedFrame>
         </div>

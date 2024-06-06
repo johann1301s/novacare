@@ -1,14 +1,16 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { createClient } from "contentful"
 import { schemas } from '@/lib/schemas/schemas'
- 
-type GetPanelsResponse = {
+
+export type Panels = {
   panels: Array<{
     id: string
     content: string
     title: string
   }>
-} | {
+}
+ 
+type GetPanelsResponse = Panels | {
   error?: string
 }
  
