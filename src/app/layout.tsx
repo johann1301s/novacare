@@ -1,10 +1,9 @@
 "use client"
 
 import StyledComponentsRegistry from '../lib/components/registry'
-import Image from 'next/image'
 import { WidthRestrictedFrame } from "@/lib/components/widthRestrictedFrame"
-import styled from 'styled-components'
 import { Work_Sans } from 'next/font/google'
+import { Header } from './header'
 
 const roboto = Work_Sans({
   weight: ['400', '500'],
@@ -13,47 +12,24 @@ const roboto = Work_Sans({
   display: 'swap',
 })
 
-export default function RootLayout({
-  children,
-}: {
+type Props = {
   children: React.ReactNode
-}) {
+}
+
+export default function RootLayout(props: Props) {
   return (
     <html>
       <body className={roboto.className}>
         <StyledComponentsRegistry>
-          <Header>
-              <WidthRestrictedFrame>
-                  <Image
-                      width={70}
-                      height={70}
-                      src="/novacarelogo.svg"
-                      alt="logo"/>
-                  <span>
-                      NOVACARE
-                  </span>
-              </WidthRestrictedFrame>
-          </Header>
+          <Header/>
           <br/>
           <br/>
           <br/>
           <WidthRestrictedFrame>
-            {children}
+            {props.children}
           </WidthRestrictedFrame>
         </StyledComponentsRegistry>
       </body>
     </html>
   )
 }
-
-const Header = styled.header`
-    background: #041f35;
-    div {
-        padding: 20px;
-        color: white;
-        font-size: 20px;
-        display: flex;
-        align-items: center;
-        gap: 20px;
-    }
-`
